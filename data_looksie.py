@@ -15,7 +15,11 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, preci
 
 def data_look(filepath):
     df = pd.read_csv(filepath)
-    print(df.head())
+    df2 = df.drop(columns=['Regional Node Examined', 'Reginol Node Positive','6th Stage'])
+    df2['Estrogen Status'] = df2['Estrogen Status'].map({'Positive': True,'Negative': False})
+    df2['Progesterone Status'] = df2['Progesterone Status'].map({'Positive': True,'Negative': False})
+    df2['Status'] = df2['Status'].map({'Alive':True,'Dead':False})
+    df2.sample(4)
 
 if __name__ == '__main__':
     path = 'data/Breast_Cancer.csv'
