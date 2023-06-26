@@ -9,7 +9,7 @@ Marital Status - Married, Divorced, Single, Widow
 T Stage - the stage of the tumor size
 N Stage - involvement of lymph nodes (larger stage means more lymph nodes)
 6th Stage - classification system used by AJ CC 6th edition, a breast cancer research guide. hard to explain, will probably drop
-Differentiate - how much the cancer cells looks like normal cells
+Differentiate - how much the cancer cells looks like the normal cells that they were derived from
 Grade - how fast the cancer grows
 Stage - whether the cancer has stayed within the region where it originated or has spread to other parts of the body, like the lungs or stomach
 Tumor Size - expressed in cubic ml
