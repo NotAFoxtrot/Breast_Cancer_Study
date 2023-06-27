@@ -17,5 +17,5 @@ Estrogen Status - whether or not the cancer has estrogen receptors
 Progesterone Status - whether or not the cancer has progesterone receptors
 Regional Node Examined - which specific lymph node the cells were tested from. Will probably drop. Not explained well.
 Regional Node Positive - will probably drop for same reason above
-Survival Months - about how long the person is expected to survive
+Survival Months - about how long the person is expected to survive. Dropped as it is a predictor and we are using the dataframe for other predictions. May skew results
 Status - whether the person has since died
