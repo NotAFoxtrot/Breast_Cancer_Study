@@ -41,10 +41,16 @@ def logistic_reg(parsed_df):
     plt.legend(loc=4)
     plt.show()
     coef = clf.coef_[0]
-    print(coef)
-    plt.plot(coef)
+    tuple_ex = list(zip(X.columns, coef))
+    print(parsed_df.shape)
+    print(clf.coef_)
+    graphing_df = pd.DataFrame(tuple_ex, columns = ['Feature', 'Coefficient'])
+    print(graphing_df.head(20))
+    plt.plot(graphing_df['Feature'], graphing_df['Coefficient'])
+    plt.axhline(y=0, color='purple',linestyle='--')
+    plt.xticks(rotation=90)
+    plt.tight_layout()
     plt.show()
-    print(X.info())
 
 def hypothesis_test_graph(parsed_df):
     new_lst = []
@@ -61,8 +67,8 @@ def hypothesis_test_graph(parsed_df):
     plt.show()
 
 def hypothesis_test_single(parsed_df):
-    Sur_a = parsed_df[parsed_df['Status'] == 1]['Progesterone Status']
-    Sur_b = parsed_df[parsed_df['Status'] == 0]['Progesterone Status']
+    Sur_a = parsed_df[parsed_df['Status'] == 1]['Age']
+    Sur_b = parsed_df[parsed_df['Status'] == 0]['Age']
     print(stats.ttest_ind(Sur_a, Sur_b, equal_var=False))
 
 if __name__ == '__main__':
