@@ -46,9 +46,8 @@ def logistic_reg(parsed_df):
     print(clf.coef_)
     graphing_df = pd.DataFrame(tuple_ex, columns = ['Feature', 'Coefficient'])
     print(graphing_df.head(20))
-    plt.plot(graphing_df['Feature'], graphing_df['Coefficient'])
-    plt.axhline(y=0, color='purple',linestyle='--')
-    plt.xticks(rotation=90)
+    plt.plot(graphing_df['Coefficient'], graphing_df['Feature'])
+    plt.axvline(x=0, color='purple',linestyle='--')
     plt.tight_layout()
     plt.show()
 
@@ -73,4 +72,4 @@ def hypothesis_test_single(parsed_df):
 
 if __name__ == '__main__':
     path = 'data/Breast_Cancer.csv'
-    hypothesis_test_single(data_look(path))
+    logistic_reg(data_look(path))

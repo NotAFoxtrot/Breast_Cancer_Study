@@ -19,3 +19,12 @@ Regional Node Examined - which specific lymph node the cells were tested from. W
 Regional Node Positive - will probably drop for same reason above
 Survival Months - about how long the person is expected to survive. Dropped as it is a predictor and we are using the dataframe for other predictions. May skew results
 Status - whether the person has since died
+
+After parsing through the data, I did a quick AUC test to see if the data was significant and got a result of around .75
+Since this is a fairly good indicator of moving forward, I standardized the data and did a logistic regression to get the coefficients. They were all fairly small with the highest at around .45
+
+After I did some hypothesis tests on the 3 largest, I came up with the following data.
+
+Stage N3: (statistic=-10.981203765477005, pvalue=5.378710704967063e-26)
+Progesterone: (statistic=9.35138388753239, pvalue=9.918443501831385e-20)
+Age: (statistic=-3.322896024862656, pvalue=0.0009309078378221079)
