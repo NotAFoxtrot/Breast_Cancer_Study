@@ -15,6 +15,13 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, preci
 
 
 def data_look(filepath):
+    '''
+    takes in the filepath of the data in the data folder and returns a dataframe that has been parsed
+
+    took out five features, either poorly explained, a predictor in itself, or not relevant.
+
+    changed objects into binary data types, either through brute forcing or through getdummies
+    '''
     df = pd.read_csv(filepath)
     df2 = df.drop(columns=['Regional Node Examined', 'Reginol Node Positive','6th Stage', 'Survival Months', 'Race'])
     df2['Estrogen Status'] = df2['Estrogen Status'].map({'Positive': 1,'Negative': 0})
@@ -25,6 +32,14 @@ def data_look(filepath):
 
 
 def logistic_reg(parsed_df):
+    '''
+    takes in the parsed dataframe from the function above and produces pertinent data or graphs
+
+    the data is set against the 'Status' Feature which is whether or not someone lives or dies and fits it to a logistic regression
+    and standard scaler
+
+    produces an AUC and pertinent coefficients
+    '''
     y = parsed_df['Status']
     X = parsed_df.drop('Status', axis=1)
     X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.25, random_state=44)
@@ -52,6 +67,10 @@ def logistic_reg(parsed_df):
     plt.show()
 
 def hypothesis_test_graph(parsed_df):
+    '''
+    using the dataframe from the data_look function, creates a graph showing the P-Score of all the features against
+    whether or not the prognosis was fatal
+    '''
     new_lst = []
     for i in (range(len(parsed_df.columns))):
         a = parsed_df[parsed_df['Status'] == 1][parsed_df.columns[i]]
@@ -66,10 +85,16 @@ def hypothesis_test_graph(parsed_df):
     plt.show()
 
 def hypothesis_test_single(parsed_df):
+    '''
+    does much the same as the feature above, except it only produces one hypothesis test
+    '''
     Sur_a = parsed_df[parsed_df['Status'] == 1]['Age']
     Sur_b = parsed_df[parsed_df['Status'] == 0]['Age']
     print(stats.ttest_ind(Sur_a, Sur_b, equal_var=False))
 
 if __name__ == '__main__':
+    '''
+    main block
+    '''
     path = 'data/Breast_Cancer.csv'
     logistic_reg(data_look(path))
